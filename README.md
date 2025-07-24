@@ -30,7 +30,6 @@ If you see this log, the server are ready to server on your local:
 
 Also, read the **note at the client source code.**
 
-
 If you want to test the deployed API, here are some cURL:
 
 * `GET` Get all the images
@@ -59,6 +58,21 @@ curl -X DELETE https://kinobi-fileupload-server.onrender.com/files/example.jpg
 ```
 
 ---
+
+## Breakdowns
+
+* Supports image upload via `multipart/form-data`, with MIME-type validation (`.jpg`, `.jpeg`, `.png`) to prevent invalid files.
+* RESTful endpoints include:
+
+  * `POST /upload` – Upload a file
+  * `GET /files` – List uploaded files
+  * `DELETE /files/:filename` – Delete a file
+  * `POST /files/:filename/duplicate` – Duplicate an existing file
+* Uploaded files are stored in a public `/uploads` directory (I can't find any free hosting cloud at the moment 🤕).
+* CORS and logging middleware are pre-integrated for cross-origin access and request tracing.
+
+---
+
 
 
 ## Credit
